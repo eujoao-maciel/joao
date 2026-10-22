@@ -1,0 +1,30 @@
+# Dependências
+node_modules/
+
+# Variáveis de ambiente e credenciais locais
+.env
+.env.*
+!.env.example
+.aws/
+
+# Configurações locais de agentes
+.agents/
+.codex/
+
+# Vercel e arquivos gerados
+.vercel/
+dist/
+build/
+coverage/
+.cache/
+
+# Logs
+*.log
+
+# Editor e sistema operacional
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
