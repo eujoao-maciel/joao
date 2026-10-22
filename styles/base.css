@@ -1,5 +1,12 @@
-*, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--space-8); }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-8);
+}
 body {
   margin: 0;
   background: var(--color-bg);
@@ -9,26 +16,79 @@ body {
 }
 /* Textura estática: não cobre elementos interativos nem cria uma camada de eventos. */
 body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   opacity: var(--texture-opacity);
-  background-image: repeating-linear-gradient(0deg, transparent 0 3px, #fff 3px 4px);
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0 3px,
+    #fff 3px 4px
+  );
 }
-h1, h2, h3, p { margin: 0; }
-h1, h2 { font-family: var(--font-title); font-weight: 900; line-height: 1; text-transform: uppercase; }
-h1 { font-size: var(--text-hero); }
-h2 { font-size: var(--text-section); letter-spacing: .06em; }
-h3 { font-size: 1rem; }
-a { color: inherit; text-underline-offset: .25em; }
-button { font: inherit; color: inherit; cursor: pointer; }
-button:disabled { cursor: default; opacity: .4; }
-:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
-img { display: block; max-width: 100%; height: auto; }
-canvas { display: block; max-width: 100%; }
-[hidden] { display: none !important; }
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+h1,
+h2 {
+  font-family: var(--font-title);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: var(--text-hero);
+}
+h2 {
+  font-size: var(--text-section);
+  letter-spacing: 0.06em;
+}
+h3 {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 700;
+}
+a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 4px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+canvas {
+  display: block;
+  max-width: 100%;
+}
+[hidden] {
+  display: none !important;
+}
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

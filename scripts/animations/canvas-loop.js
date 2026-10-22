@@ -1,10 +1,14 @@
 /** Ciclo compartilhado. draw recebe tempo em segundos, dimensões CSS e modo estático.
- * A implementação da fita ASCII ficará em um renderizador separado.
+ * A fita ASCII é desenhada pelo renderizador ascii-wave.js.
  */
-export function createCanvasLoop(canvas, draw, { visibilityTarget = canvas } = {}) {
-  const context = canvas.getContext('2d');
+export function createCanvasLoop(
+  canvas,
+  draw,
+  { visibilityTarget = canvas } = {},
+) {
+  const context = canvas.getContext("2d");
   if (!context) return () => {};
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   let visible = false;
   let frame = 0;
   let lastTime = null;
@@ -13,10 +17,16 @@ export function createCanvasLoop(canvas, draw, { visibilityTarget = canvas } = {
   let height = 0;
   const render = () => {
     context.clearRect(0, 0, width, height);
-    draw({ context, width, height, time: reducedMotion.matches ? 0 : elapsed, static: reducedMotion.matches });
+    draw({
+      context,
+      width,
+      height,
+      time: reducedMotion.matches ? 0 : elapsed,
+      static: reducedMotion.matches,
+    });
   };
   const tick = (now) => {
-    if (lastTime !== null) elapsed += Math.min((now - lastTime) / 1000, .05);
+    if (lastTime !== null) elapsed += Math.min((now - lastTime) / 1000, 0.05);
     lastTime = now;
     render();
     frame = requestAnimationFrame(tick);
@@ -36,16 +46,19 @@ export function createCanvasLoop(canvas, draw, { visibilityTarget = canvas } = {
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     sync();
   });
-  const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); });
+  const observer = new IntersectionObserver(([entry]) => {
+    visible = entry.isIntersecting;
+    sync();
+  });
   resize.observe(canvas);
   observer.observe(visibilityTarget);
-  document.addEventListener('visibilitychange', sync);
-  reducedMotion.addEventListener('change', sync);
+  document.addEventListener("visibilitychange", sync);
+  reducedMotion.addEventListener("change", sync);
   return () => {
     cancelAnimationFrame(frame);
     resize.disconnect();
     observer.disconnect();
-    document.removeEventListener('visibilitychange', sync);
-    reducedMotion.removeEventListener('change', sync);
+    document.removeEventListener("visibilitychange", sync);
+    reducedMotion.removeEventListener("change", sync);
   };
 }

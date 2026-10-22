@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="João Maciel, desenvolvedor web. Construo experiências digitais do conceito à implementação."
+    />
+    <title>João Maciel — Portfólio</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@700;800&amp;display=swap"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+    <script type="module" src="../scripts/main.js"></script>
+  </head>
+  <body>
+    <main aria-label="Portfólio de João Maciel">
+      <div class="hero-shell container">
+        <header class="site-header">
+          <a
+            class="terminal-mark"
+            href="#sobre"
+            aria-label="João Maciel — início"
+            >&gt;_</a
+          >
+          <nav class="site-nav" aria-label="Navegação principal">
+            <button
+              class="site-nav__toggle menu-toggle"
+              type="button"
+              data-menu-toggle
+              aria-controls="main-menu"
+              aria-expanded="false"
+              aria-label="Abrir ou fechar menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+            <div class="site-nav__links" id="main-menu">
+              <a href="#sobre">Sobre</a>
+              <a href="#projetos" data-future-section>Projetos</a>
+              <a href="#servicos" data-future-section>Serviços</a>
+              <a href="#contato" data-future-section>Contato</a>
+            </div>
+          </nav>
+        </header>
+        <section class="hero" id="sobre" aria-labelledby="hero-title">
+          <div class="hero__content">
+            <h1 class="hero__name" id="hero-title">João<br />Maciel</h1>
+            <p class="hero__role">Desenvolvedor web</p>
+            <p class="hero__description">
+              Construo experiências digitais<br class="desktop-break" />
+              do conceito à implementação.
+            </p>
+            <div class="hero__actions">
+              <a
+                class="button button--primary"
+                href="#projetos"
+                data-future-section
+                >Ver projetos <span aria-hidden="true">→</span></a
+              >
+              <a class="button" href="#contato" data-future-section
+                >Contato <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <p class="hero__notice" data-section-notice role="status"></p>
+          </div>
+          <canvas class="hero__art" data-ascii aria-hidden="true"></canvas>
+        </section>
+        <div class="hero-footer" aria-hidden="true">
+          <span></span><span>↓</span><span></span>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

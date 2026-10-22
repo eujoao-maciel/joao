@@ -11,7 +11,7 @@
 
 - Seguir os mockups aprovados, sem redesenhar o layout.
 - Usar apenas preto, branco e tons de cinza.
-- Títulos em fonte pixel/bitmap; textos em fonte monoespaçada legível.
+- Títulos em Oxanium; textos em fonte monoespaçada legível.
 - Bordas finas, textura discreta e espaçamento consistente.
 - Manter textos e botões nítidos, com contraste suficiente.
 

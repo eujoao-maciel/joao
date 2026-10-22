@@ -1,16 +1,16 @@
 # Padrões de implementação
 
-Base derivada dos oito mockups desktop/mobile e do AGENTS.md. Esta etapa configura a fundação; a página, a fonte bitmap final e o renderizador da fita ainda serão implementados.
+Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. As demais seções ainda serão implementadas.
 
 ## Estilos
 
 `styles/main.css` é o único ponto de entrada. A ordem das camadas é tokens → base → layout → components → utilities. Alterar cores, fontes, espaçamentos e tempos em `tokens.css`; evitar repetir valores nos componentes. Usar classes no padrão bloco (`project-card`), elemento (`project-card__body`) e variante (`button--primary`). Estados interativos usam atributos nativos como `disabled` e `aria-expanded`. JavaScript seleciona atributos `data-*`, nunca classes de aparência.
 
-O breakpoint compartilhado é 40rem. Hero mantém texto à esquerda e canvas à direita em todas as telas. Projetos passam de três colunas para uma; contatos também. Serviços mantêm trilho horizontal. Imagens dos projetos usam altura automática e escala de cinza, sem recorte. Textura é estática, discreta e não recebe eventos. Fontes finais devem ser locais em `assets/fonts`, com `font-display: swap`; a família bitmap está reservada e usa fallback até o arquivo aprovado estar disponível.
+O breakpoint compartilhado é 40rem. Hero mantém texto à esquerda e canvas à direita em todas as telas. Projetos passam de três colunas para uma; contatos também. Serviços mantêm trilho horizontal. Imagens dos projetos usam altura automática e escala de cinza, sem recorte. Textura é estática, discreta e não recebe eventos. Títulos usam `--font-title: Oxanium`, com pesos 700 e 800. A fonte é carregada pelo Google Fonts no head de `pages/hero.html`, com `display=swap` e fallback sans-serif. Textos de corpo continuam monoespaçados. Novas páginas com títulos devem incluir o mesmo carregamento da fonte.
 
 ## Componentes
 
-Reutilizar HTML semântico e classes; não criar um sistema de renderização de HTML em JavaScript. Conteúdo principal fica no `index.html`; `pages/` fica reservado para futuras páginas. Assets reais vão em `assets/images/`.
+Reutilizar HTML semântico e classes; não criar um sistema de renderização de HTML em JavaScript. O `index.html` é o ponto de entrada e encaminha para a página completa `pages/hero.html`. O HTML é estático e não depende de fetch ou JavaScript para aparecer. Para executar os módulos ES, usar `npm run dev` e abrir http://localhost:4173; não abrir pelo protocolo file://. O servidor é exclusivo para desenvolvimento; a publicação continua estática na Vercel. Assets reais vão em `assets/images/`.
 
 - Botões: `.button` e opcionalmente `.button--primary`. Navegação usa `<a>`; ações usam `<button type="button">`.
 - Projetos: `<article class="project-card">`, imagem com `.project-card__image`, conteúdo `.project-card__body`, stack `.project-card__stack` entre descrição e link. Preencher `alt` com descrição útil da captura real.

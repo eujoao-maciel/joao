@@ -2,7 +2,7 @@
 export function getAsciiSettings(width) {
   return {
     cellSize: width <= 640 ? 14 : 9,
-    fontFamily: 'monospace',
-    characters: ' .:-=+*#%@',
+    fontFamily: "monospace",
+    characters: " .:-=+*#%@",
   };
 }
