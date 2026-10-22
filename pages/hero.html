@@ -41,7 +41,7 @@
             </button>
             <div class="site-nav__links" id="main-menu">
               <a href="#sobre">Sobre</a>
-              <a href="#projetos" data-future-section>Projetos</a>
+              <a href="#projetos">Projetos</a>
               <a href="#servicos" data-future-section>Serviços</a>
               <a href="#contato" data-future-section>Contato</a>
             </div>
@@ -56,10 +56,7 @@
               do conceito à implementação.
             </p>
             <div class="hero__actions">
-              <a
-                class="button button--primary"
-                href="#projetos"
-                data-future-section
+              <a class="button button--primary" href="#projetos"
                 >Ver projetos <span aria-hidden="true">→</span></a
               >
               <a class="button" href="#contato" data-future-section
@@ -74,6 +71,105 @@
           <span></span><span>↓</span><span></span>
         </div>
       </div>
+      <section
+        class="projects section container"
+        id="projetos"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-heading">
+          <h2 id="projects-title">Projetos</h2>
+        </div>
+        <div class="projects-grid">
+          <!-- Para adicionar projetos, copie um article completo. Veja CONVENTIONS.md. -->
+          <article class="project-card" aria-labelledby="project-herotuner">
+            <div class="project-card__media">
+              <img
+                class="project-card__image"
+                src="../assets/images/herotuner.webp"
+                alt="Interface do HeroTuner com afinador, notas musicais e braço de guitarra."
+                width="405"
+                height="383"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-card__body">
+              <h3 id="project-herotuner">HeroTuner</h3>
+              <p class="project-card__description">
+                Afinador de guitarras em tempo real no navegador.
+              </p>
+              <p class="project-card__stack">
+                <span class="sr-only">Tecnologias: </span>React · TypeScript ·
+                Tailwind<br />Vite · Web Audio API · Pitchy
+              </p>
+              <a
+                class="project-card__link"
+                href="https://hero-tuner-client.vercel.app/"
+                aria-label="Ver projeto HeroTuner"
+                >Ver projeto <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article class="project-card" aria-labelledby="project-curriculogen">
+            <div class="project-card__media">
+              <img
+                class="project-card__image"
+                src="../assets/images/curriculogen.webp"
+                alt="Interface do CurriculoGen com seleção de modelos e prévia de um currículo."
+                width="392"
+                height="370"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-card__body">
+              <h3 id="project-curriculogen">CurriculoGen</h3>
+              <p class="project-card__description">
+                Crie, personalize e exporte currículos em PDF.
+              </p>
+              <p class="project-card__stack">
+                <span class="sr-only">Tecnologias: </span>React · Node.js ·
+                Express<br />MongoDB · Tailwind
+              </p>
+              <a
+                class="project-card__link"
+                href="https://curriculo-client.vercel.app/"
+                aria-label="Ver projeto CurriculoGen"
+                >Ver projeto <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+          <article class="project-card" aria-labelledby="project-askflow">
+            <div class="project-card__media">
+              <img
+                class="project-card__image"
+                src="../assets/images/askflow.webp"
+                alt="Interface do AskFlow exibindo uma resposta sobre algoritmo de busca binária."
+                width="382"
+                height="365"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-card__body">
+              <h3 id="project-askflow">AskFlow</h3>
+              <p class="project-card__description">
+                Respostas de IA adaptadas à sua pergunta.
+              </p>
+              <p class="project-card__stack">
+                <span class="sr-only">Tecnologias: </span>React Native · Expo ·
+                TypeScript
+              </p>
+              <a
+                class="project-card__link"
+                href="https://github.com/eujoao-maciel/askFlow"
+                aria-label="Ver projeto AskFlow no GitHub"
+                >Ver projeto <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
   </body>
 </html>

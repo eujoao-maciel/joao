@@ -5,4 +5,5 @@
 @import url("./layout.css") layer(layout);
 @import url("./components/ui.css") layer(components);
 @import url("./components/hero.css") layer(components);
+@import url("./components/projects.css") layer(components);
 @import url("./utilities.css") layer(utilities);

@@ -1,0 +1,112 @@
+.projects {
+  scroll-margin-top: var(--space-6);
+}
+.projects .section-heading::after {
+  min-width: var(--space-4);
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  overflow: hidden;
+}
+/* Reserva visual sem imagens fictícias. Com imagem real, a proporção é livre. */
+.project-card__media {
+  border-bottom: var(--border);
+}
+.project-card__media:empty {
+  aspect-ratio: 1.05;
+  background: var(--color-bg);
+}
+.project-card__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1);
+}
+.project-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--space-2);
+  padding: var(--space-4);
+}
+.project-card__body h3 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.project-card__description {
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+.project-card__stack {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: 1.5;
+  padding-bottom: var(--space-2);
+}
+.project-card__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding: var(--space-2);
+  border-top: var(--border);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: var(--text-small);
+  min-height: 2.75rem;
+  transition:
+    background-color var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+a.project-card__link {
+  cursor: pointer;
+}
+a.project-card__link > [aria-hidden="true"] {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease);
+}
+a.project-card__link:focus-visible,
+a.project-card__link:active {
+  color: var(--color-bg);
+  background: var(--color-text);
+}
+.project-card__link[aria-disabled="true"] {
+  color: var(--color-muted);
+}
+@media (hover: hover) {
+  a.project-card__link:hover {
+    color: var(--color-bg);
+    background: var(--color-text);
+  }
+}
+@media (max-width: 40rem) {
+  .projects .section-heading {
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+  .project-card__body {
+    padding: var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.project-card__link:focus-visible > [aria-hidden="true"] {
+    transform: translate(2px, -2px);
+  }
+  @media (hover: hover) {
+    a.project-card__link:hover > [aria-hidden="true"] {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  a.project-card__link,
+  a.project-card__link > [aria-hidden="true"] {
+    transition: none;
+  }
+  a.project-card__link > [aria-hidden="true"] {
+    transform: none;
+  }
+}

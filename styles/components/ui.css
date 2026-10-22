@@ -30,20 +30,6 @@
   border: var(--border);
   background: var(--color-surface);
 }
-.project-card__image {
-  width: 100%;
-  height: auto;
-  filter: grayscale(1);
-}
-.project-card__body {
-  display: grid;
-  gap: var(--space-3);
-  padding: var(--space-4);
-}
-.project-card__stack {
-  color: var(--color-muted);
-  font-size: var(--text-small);
-}
 .service-card {
   flex: 0 0 clamp(15rem, 29vw, 22rem);
   padding: var(--space-4);

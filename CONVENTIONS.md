@@ -1,6 +1,6 @@
 # Padrões de implementação
 
-Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. As demais seções ainda serão implementadas.
+Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços e contatos ainda serão implementados.
 
 ## Estilos
 
@@ -22,10 +22,20 @@ Módulos em `scripts/components/` exportam inicializadores chamados uma única v
 
 ## Animações
 
-Transições de interface usam tokens de duração e easing, limitadas a cor e fundo nesta base. Respeitar `prefers-reduced-motion` no CSS e JavaScript.
+Transições de interface usam tokens de duração e easing, aplicadas a cor, fundo e ao deslocamento discreto da seta nos links de projeto. Respeitar `prefers-reduced-motion` no CSS e JavaScript.
 
 Canvas decorativo usa `aria-hidden="true"`, sem foco e sem eventos de ponteiro, dentro de `.hero__art`. O renderizador ASCII deverá importar `createCanvasLoop` e `getAsciiSettings`; chamar o ciclo com `visibilityTarget` apontando para a hero. `draw` recebe contexto, largura/altura em pixels CSS, tempo em segundos e indicador `static`. Usar `cellSize` maior no celular para reduzir densidade. O ciclo controla resolução, requestAnimationFrame, pausa fora da hero, aba oculta e quadro estático com movimento reduzido. A função retornada limpa observers e listeners quando necessário. Não criar um segundo ciclo para a mesma arte.
 
 ## Validação
 
 Ao implementar as seções: conferir mockups em desktop e celular, console, navegação por teclado, foco, preferência de movimento reduzido e ausência de rolagem horizontal da página. Só o trilho de serviços deve rolar lateralmente. Validar em preview antes de qualquer publicação solicitada.
+
+## Adicionar ou atualizar projetos
+
+Em `pages/hero.html`, dentro de `.projects-grid`, copiar um `<article class="project-card">` completo. Não criar novas regras CSS para cada projeto: o grid aceita qualquer quantidade e abre novas linhas automaticamente. Usar um ID único no `h3` e repetir o valor em `aria-labelledby` do article. Preencher nome, descrição curta e tecnologias; a stack fica entre descrição e link.
+
+Os cards atuais usam as capturas WebP em `assets/images/`. Para adicionar outra captura real, inserir um `<img class="project-card__image" src="../assets/images/arquivo.webp" alt="Descrição da captura real" loading="lazy" decoding="async" width="LARGURA_REAL" height="ALTURA_REAL">` dentro de `.project-card__media`. Usar dimensões reais numéricas: a imagem mantém sua proporção e recebe escala de cinza automaticamente. Não manter aria-hidden ao inserir a imagem.
+
+Enquanto as URLs não forem confirmadas, “Ver projeto” é texto indisponível, sem href fictício e sem entrar na ordem de foco. Quando houver URL real, substituir o span externo por `<a class="project-card__link" href="URL_REAL" aria-label="Ver projeto NOME">Ver projeto <span aria-hidden="true">↗</span></a>`. Remover o texto oculto de indisponibilidade. Nenhum JavaScript é necessário para adicionar cards.
+
+Destinos atuais confirmados pelo usuário: HeroTuner em `https://hero-tuner-client.vercel.app/`, CurriculoGen em `https://curriculo-client.vercel.app/` e AskFlow no repositório `https://github.com/eujoao-maciel/askFlow`. Todos reutilizam `.project-card__link`, incluindo os efeitos de hover e foco e o suporte a movimento reduzido.
