@@ -7,4 +7,5 @@
 @import url("./components/hero.css") layer(components);
 @import url("./components/projects.css") layer(components);
 @import url("./components/services.css") layer(components);
+@import url("./components/contact.css") layer(components);
 @import url("./utilities.css") layer(utilities);

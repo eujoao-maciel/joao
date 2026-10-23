@@ -1,6 +1,6 @@
 # Padrões de implementação
 
-Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços usam uma faixa horizontal com controles; contatos ainda serão implementados.
+Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços usam uma faixa horizontal com controles; contatos incluem GitHub, LinkedIn e e-mail, seguidos pelo rodapé.
 
 ## Estilos
 
@@ -45,3 +45,9 @@ Destinos atuais confirmados pelo usuário: HeroTuner em `https://hero-tuner-clie
 A seção `#servicos` fica em `pages/hero.html`; os estilos estão em `styles/components/services.css`. Cada `.service-card` contém título, descrição curta, número decorativo e uma ilustração SVG. As ilustrações compartilham o sprite `assets/images/services/illustrations.svg`; não são capturas de projetos. Para adicionar um serviço, copiar um article, ajustar o ID/aria-labelledby, texto, número e símbolo SVG. Os tamanhos são compartilhados e o carrossel aceita mais cards automaticamente.
 
 O módulo `scripts/components/carousel.js` avança pela largura de um card mais o espaçamento. As setas ficam indisponíveis nos extremos; o indicador inferior acompanha a posição. O trilho possui foco próprio, aceita toque, trackpad, setas do teclado, Home e End. O indicador é apenas visual; os controles e o teclado fazem a navegação acessível. Respeitar movimento reduzido desativando rolagem suave. A rolagem horizontal fica contida no trilho, inclusive no celular.
+
+## Contato e rodapé
+
+A seção `#contato` está em `pages/hero.html`; estilos em `styles/components/contact.css`. Reutiliza `.contact-links` e `.contact-link` para três colunas no desktop e uma no celular no breakpoint de 40rem. Os ícones decorativos compartilham `assets/images/contact-icons.svg` e usam a cor do texto para manter contraste nos estados interativos. Os destinos são os informados pelo usuário: GitHub `https://github.com/eujoao-maciel`, LinkedIn `https://www.linkedin.com/in/joaomaciel01` e e-mail `mailto:joao.eudes13jem@gmail.com`. Não há formulário ou backend.
+
+O rodapé usa `.site-footer` e um link nativo para `#sobre`. Todas as âncoras de navegação agora têm destinos na página; não há mais interceptação ou aviso de seção futura. Rolagem suave e efeitos de links respeitam a preferência de movimento reduzido. Manter os nomes acessíveis dos links ao alterar contatos.
