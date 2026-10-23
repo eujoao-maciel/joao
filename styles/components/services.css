@@ -1,0 +1,122 @@
+.services {
+  padding-block: var(--space-12);
+  scroll-margin-top: var(--space-6);
+}
+.services__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+.services__controls {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+.services__arrow {
+  width: 2.75rem;
+  justify-content: center;
+  padding: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.services__arrow:disabled {
+  background: transparent;
+  color: var(--color-muted);
+}
+.services__track {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.services__track::-webkit-scrollbar {
+  display: none;
+}
+.service-card {
+  position: relative;
+  isolation: isolate;
+  flex: 0 0 calc((100% - var(--space-2) * 3) / 3.4);
+  min-width: 16rem;
+  min-height: 11.5rem;
+  padding: var(--space-4);
+  scroll-snap-align: start;
+  background: var(--color-bg);
+}
+.service-card h3 {
+  position: relative;
+  z-index: 1;
+  max-width: calc(100% - 2.25rem);
+  font-family: var(--font-title);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: 1.4;
+}
+.service-card__number {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-3);
+  color: var(--color-muted);
+  font-size: 0.625rem;
+}
+.service-card__rule {
+  display: block;
+  width: 0.875rem;
+  border-top: 1px solid var(--color-text);
+  margin-block: var(--space-2) var(--space-4);
+}
+.service-card__description {
+  position: relative;
+  z-index: 1;
+  width: 44%;
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: 1.5;
+}
+.service-card__art {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  width: 47%;
+  height: auto;
+  pointer-events: none;
+}
+.services__progress {
+  height: 4px;
+  margin-top: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+.services__progress span {
+  display: block;
+  width: 12%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-text);
+  transform: translateX(calc(var(--carousel-progress, 0) * 733.333%));
+}
+@media (max-width: 40rem) {
+  .services__header {
+    gap: var(--space-2);
+    margin-bottom: var(--space-4);
+  }
+  .services__header h2 {
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+    letter-spacing: 0;
+  }
+  .service-card {
+    flex-basis: 82%;
+    min-width: 0;
+    min-height: 13.5rem;
+    padding: var(--space-3);
+  }
+  .service-card__number {
+    top: var(--space-3);
+  }
+  .service-card h3 {
+    font-size: 0.8125rem;
+  }
+}

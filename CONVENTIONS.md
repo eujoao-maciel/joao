@@ -1,6 +1,6 @@
 # Padrões de implementação
 
-Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços e contatos ainda serão implementados.
+Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços usam uma faixa horizontal com controles; contatos ainda serão implementados.
 
 ## Estilos
 
@@ -39,3 +39,9 @@ Os cards atuais usam as capturas WebP em `assets/images/`. Para adicionar outra 
 Enquanto as URLs não forem confirmadas, “Ver projeto” é texto indisponível, sem href fictício e sem entrar na ordem de foco. Quando houver URL real, substituir o span externo por `<a class="project-card__link" href="URL_REAL" aria-label="Ver projeto NOME">Ver projeto <span aria-hidden="true">↗</span></a>`. Remover o texto oculto de indisponibilidade. Nenhum JavaScript é necessário para adicionar cards.
 
 Destinos atuais confirmados pelo usuário: HeroTuner em `https://hero-tuner-client.vercel.app/`, CurriculoGen em `https://curriculo-client.vercel.app/` e AskFlow no repositório `https://github.com/eujoao-maciel/askFlow`. Todos reutilizam `.project-card__link`, incluindo os efeitos de hover e foco e o suporte a movimento reduzido.
+
+## Serviços
+
+A seção `#servicos` fica em `pages/hero.html`; os estilos estão em `styles/components/services.css`. Cada `.service-card` contém título, descrição curta, número decorativo e uma ilustração SVG. As ilustrações compartilham o sprite `assets/images/services/illustrations.svg`; não são capturas de projetos. Para adicionar um serviço, copiar um article, ajustar o ID/aria-labelledby, texto, número e símbolo SVG. Os tamanhos são compartilhados e o carrossel aceita mais cards automaticamente.
+
+O módulo `scripts/components/carousel.js` avança pela largura de um card mais o espaçamento. As setas ficam indisponíveis nos extremos; o indicador inferior acompanha a posição. O trilho possui foco próprio, aceita toque, trackpad, setas do teclado, Home e End. O indicador é apenas visual; os controles e o teclado fazem a navegação acessível. Respeitar movimento reduzido desativando rolagem suave. A rolagem horizontal fica contida no trilho, inclusive no celular.
