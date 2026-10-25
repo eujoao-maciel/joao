@@ -1,1 +1,1 @@
-https://joao-maciel.vercel.app/pages/hero.html my personal website
+https://joao-maciel.vercel.app/pages/index.html my personal website

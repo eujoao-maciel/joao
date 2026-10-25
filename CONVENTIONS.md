@@ -1,16 +1,16 @@
 # Padrões de implementação
 
-Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/hero.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços usam uma faixa horizontal com controles; contatos incluem GitHub, LinkedIn e e-mail, seguidos pelo rodapé.
+Base derivada dos oito mockups desktop/mobile e do AGENTS.md. A hero está implementada em pages/index.html, com renderizador ASCII em scripts/animations/ascii-wave.js. O nome é texto HTML em Oxanium, a família compartilhada por todos os títulos. A seção de projetos usa cards estáticos na mesma página. Serviços usam uma faixa horizontal com controles; contatos incluem GitHub, LinkedIn e e-mail, seguidos pelo rodapé.
 
 ## Estilos
 
 `styles/main.css` é o único ponto de entrada. A ordem das camadas é tokens → base → layout → components → utilities. Alterar cores, fontes, espaçamentos e tempos em `tokens.css`; evitar repetir valores nos componentes. Usar classes no padrão bloco (`project-card`), elemento (`project-card__body`) e variante (`button--primary`). Estados interativos usam atributos nativos como `disabled` e `aria-expanded`. JavaScript seleciona atributos `data-*`, nunca classes de aparência.
 
-O breakpoint compartilhado é 40rem. Hero mantém texto à esquerda e canvas à direita em todas as telas. Projetos passam de três colunas para uma; contatos também. Serviços mantêm trilho horizontal. Imagens dos projetos usam altura automática e escala de cinza, sem recorte. Textura é estática, discreta e não recebe eventos. Títulos usam `--font-title: Oxanium`, com pesos 700 e 800. A fonte é carregada pelo Google Fonts no head de `pages/hero.html`, com `display=swap` e fallback sans-serif. Textos de corpo continuam monoespaçados. Novas páginas com títulos devem incluir o mesmo carregamento da fonte.
+O breakpoint compartilhado é 40rem. Hero mantém texto à esquerda e canvas à direita em todas as telas. Projetos passam de três colunas para uma; contatos também. Serviços mantêm trilho horizontal. Imagens dos projetos usam altura automática e escala de cinza, sem recorte. Textura é estática, discreta e não recebe eventos. Títulos usam `--font-title: Oxanium`, com pesos 700 e 800. A fonte é carregada pelo Google Fonts no head de `pages/index.html`, com `display=swap` e fallback sans-serif. Textos de corpo continuam monoespaçados. Novas páginas com títulos devem incluir o mesmo carregamento da fonte.
 
 ## Componentes
 
-Reutilizar HTML semântico e classes; não criar um sistema de renderização de HTML em JavaScript. O `index.html` é o ponto de entrada e encaminha para a página completa `pages/hero.html`. O HTML é estático e não depende de fetch ou JavaScript para aparecer. Para executar os módulos ES, usar `npm run dev` e abrir http://localhost:4173; não abrir pelo protocolo file://. O servidor é exclusivo para desenvolvimento; a publicação continua estática na Vercel. Assets reais vão em `assets/images/`.
+Reutilizar HTML semântico e classes; não criar um sistema de renderização de HTML em JavaScript. O `index.html` é o ponto de entrada e encaminha para a página completa `pages/index.html`. O HTML é estático e não depende de fetch ou JavaScript para aparecer. Para executar os módulos ES, usar `npm run dev` e abrir http://localhost:4173; não abrir pelo protocolo file://. O servidor é exclusivo para desenvolvimento; a publicação continua estática na Vercel. Assets reais vão em `assets/images/`.
 
 - Botões: `.button` e opcionalmente `.button--primary`. Navegação usa `<a>`; ações usam `<button type="button">`.
 - Projetos: `<article class="project-card">`, imagem com `.project-card__image`, conteúdo `.project-card__body`, stack `.project-card__stack` entre descrição e link. Preencher `alt` com descrição útil da captura real.
@@ -32,7 +32,7 @@ Ao implementar as seções: conferir mockups em desktop e celular, console, nave
 
 ## Adicionar ou atualizar projetos
 
-Em `pages/hero.html`, dentro de `.projects-grid`, copiar um `<article class="project-card">` completo. Não criar novas regras CSS para cada projeto: o grid aceita qualquer quantidade e abre novas linhas automaticamente. Usar um ID único no `h3` e repetir o valor em `aria-labelledby` do article. Preencher nome, descrição curta e tecnologias; a stack fica entre descrição e link.
+Em `pages/index.html`, dentro de `.projects-grid`, copiar um `<article class="project-card">` completo. Não criar novas regras CSS para cada projeto: o grid aceita qualquer quantidade e abre novas linhas automaticamente. Usar um ID único no `h3` e repetir o valor em `aria-labelledby` do article. Preencher nome, descrição curta e tecnologias; a stack fica entre descrição e link.
 
 Os cards atuais usam as capturas WebP em `assets/images/`. Para adicionar outra captura real, inserir um `<img class="project-card__image" src="../assets/images/arquivo.webp" alt="Descrição da captura real" loading="lazy" decoding="async" width="LARGURA_REAL" height="ALTURA_REAL">` dentro de `.project-card__media`. Usar dimensões reais numéricas: a imagem mantém sua proporção e recebe escala de cinza automaticamente. Não manter aria-hidden ao inserir a imagem.
 
@@ -42,13 +42,13 @@ Destinos atuais confirmados pelo usuário: HeroTuner em `https://hero-tuner-clie
 
 ## Serviços
 
-A seção `#servicos` fica em `pages/hero.html`; os estilos estão em `styles/components/services.css`. Cada `.service-card` contém título, descrição curta, número decorativo e uma ilustração SVG. As ilustrações compartilham o sprite `assets/images/services/illustrations.svg`; não são capturas de projetos. Para adicionar um serviço, copiar um article, ajustar o ID/aria-labelledby, texto, número e símbolo SVG. Os tamanhos são compartilhados e o carrossel aceita mais cards automaticamente.
+A seção `#servicos` fica em `pages/index.html`; os estilos estão em `styles/components/services.css`. Cada `.service-card` contém título, descrição curta, número decorativo e uma ilustração SVG. As ilustrações compartilham o sprite `assets/images/services/illustrations.svg`; não são capturas de projetos. Para adicionar um serviço, copiar um article, ajustar o ID/aria-labelledby, texto, número e símbolo SVG. Os tamanhos são compartilhados e o carrossel aceita mais cards automaticamente.
 
 O módulo `scripts/components/carousel.js` avança pela largura de um card mais o espaçamento. As setas ficam indisponíveis nos extremos; o indicador inferior acompanha a posição. O trilho possui foco próprio, aceita toque, trackpad, setas do teclado, Home e End. O indicador é apenas visual; os controles e o teclado fazem a navegação acessível. Respeitar movimento reduzido desativando rolagem suave. A rolagem horizontal fica contida no trilho, inclusive no celular.
 
 ## Contato e rodapé
 
-A seção `#contato` está em `pages/hero.html`; estilos em `styles/components/contact.css`. Reutiliza `.contact-links` e `.contact-link` para três colunas no desktop e uma no celular no breakpoint de 40rem. Os ícones decorativos compartilham `assets/images/contact-icons.svg` e usam a cor do texto para manter contraste nos estados interativos. Os destinos são os informados pelo usuário: GitHub `https://github.com/eujoao-maciel`, LinkedIn `https://www.linkedin.com/in/joaomaciel01` e e-mail `mailto:joao.eudes13jem@gmail.com`. Não há formulário ou backend.
+A seção `#contato` está em `pages/index.html`; estilos em `styles/components/contact.css`. Reutiliza `.contact-links` e `.contact-link` para três colunas no desktop e uma no celular no breakpoint de 40rem. Os ícones decorativos compartilham `assets/images/contact-icons.svg` e usam a cor do texto para manter contraste nos estados interativos. Os destinos são os informados pelo usuário: GitHub `https://github.com/eujoao-maciel`, LinkedIn `https://www.linkedin.com/in/joaomaciel01` e e-mail `mailto:joao.eudes13jem@gmail.com`. Não há formulário ou backend.
 
 O rodapé usa `.site-footer` e um link nativo para `#sobre`. Todas as âncoras de navegação agora têm destinos na página; não há mais interceptação ou aviso de seção futura. Rolagem suave e efeitos de links respeitam a preferência de movimento reduzido. Manter os nomes acessíveis dos links ao alterar contatos.
 
